@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.cshuig.entity">
+    <class name="Classroom" table="t_classroom">
+        <id name="id">
+          <generator class="native"/>
+        </id>
+        <property name="cname"/>
+        <property name="grade"/>
+        <!-- inverse=true： 表示One端不维护关系 -->
+        <set name="stus" lazy="extra" inverse="true" fetch="subselect">
+        	<key column="c_id"/>
+        	<one-to-many class="Student"/>
+        </set>
+        
+        <!-- 对方在我这里的外键名称，必须和One一端配置的外键名称一样 
+        	fetch="join" ：load()出classroom对象时，立马join出special对象
+        -->
+        <many-to-one name="special" column="s_id" fetch="join"/>
+    </class>
+</hibernate-mapping>

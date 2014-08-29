@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.cshuig.entity">
+    <class name="Student" table="t_student">
+        <id name="id">
+          <generator class="native"/>
+        </id>
+        <property name="name"/>
+        <property name="sno" column="s_no" type="int"/>
+        
+        <!-- name：表示javabean的属性名称, colunm：表示数据库表的外键名称 -->
+        <many-to-one name="classRoom" column="c_id" cascade="all"/>
+    </class>
+</hibernate-mapping>

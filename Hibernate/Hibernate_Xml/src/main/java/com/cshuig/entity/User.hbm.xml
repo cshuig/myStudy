@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.cshuig.entity">
+    <class name="User" table="t_user">
+        <id name="id">
+          <!-- 会自动生成一个数字，建议使用 -->
+          <generator class="native"/>
+          <!-- 表示不会自动生成，而是需要由用户来指定 -->
+          <!-- <generator class="assigned"/> -->
+          <!-- 会自动生成一个字符串，此时组件必须为String类型 -->
+		  <!-- <generator class="uuid" /> -->
+        </id>
+        <property name="name"/>
+        <property name="age" type="int"/>
+        <many-to-one name="role" column="r_id" cascade="all" />
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.cshuig.entity">
+    <class name="IdCard" table="t_idCard">
+        <id name="id">
+          <generator class="native"/>
+        </id>
+        <property name="no"/>
+        <!-- one2one 和  one2Many类型，，只要增加 unique="true"，说明只能有一个关系 ，
+       		目前关系 外键 是在IdCard一端，如果配置是双向关系，那么关系由IdCard来维护 -->
+        <many-to-one name="persion" column="p_id" unique="true"/>
+    </class>
+</hibernate-mapping>

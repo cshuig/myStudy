@@ -15,4 +15,10 @@
     <packaging>pom</packaging>
     <name>Hibernate</name>
     <url>http://maven.apache.org</url>
+    <modules>
+        <module>Hibernate_Xml</module>
+        <module>Hibernate_Annotation</module>
+        <module>Hibernate_Hql_Xml</module>
+        <module>Hibernate_Hql_Annotation</module>
+    </modules>
 </project>

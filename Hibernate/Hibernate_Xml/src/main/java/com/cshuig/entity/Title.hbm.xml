@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.cshuig.entity">
+    <class name="Title" table="t_title">
+        <id name="id">
+          <generator class="native"/>
+        </id>
+        <property name="tname"/>
+        <property name="tcontent"/>
+        <set name="comments" lazy="extra">
+        	<!-- key:指定在对方的 外键名称(column) -->
+        	<key column="t_id"/>
+        	
+        	<!-- calss：用来设置列表中的对象类型 -->
+        	<one-to-many class="Comments"/>
+        </set>
+    </class>
+</hibernate-mapping>

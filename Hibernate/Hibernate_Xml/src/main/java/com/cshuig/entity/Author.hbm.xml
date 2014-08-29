@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.cshuig.entity">
+    <class name="Author" table="t_author">
+        <id name="id">
+          <generator class="native"/>
+        </id>
+        <property name="aname"/>
+        <!-- 多对多需要有个关联表 -->
+        <set name="books" table="t_book_author" lazy="extra">
+        	<key column="a_id"/><!-- 我在对方的外键名称 -->
+        	<many-to-many class="Book" column="b_id"/>
+        </set>
+    </class>
+</hibernate-mapping>

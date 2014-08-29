@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.cshuig.entity">
+    <class name="Student" table="t_student">
+    	<id name="id">
+          <generator class="native"/>
+        </id>
+        <property name="sname"/>
+        <property name="sex"/>
+        <!-- 班级我学生表中的：外键名称
+        	fetch="join" : load()学生对象时，会立马join出classroom 对象
+         -->
+        <many-to-one name="classroom" column="c_id" fetch="join"/>
+    </class>
+</hibernate-mapping>

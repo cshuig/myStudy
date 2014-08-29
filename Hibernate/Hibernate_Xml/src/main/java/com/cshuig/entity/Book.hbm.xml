@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.cshuig.entity">
+    <class name="Book" table="t_book">
+        <id name="id">
+          <generator class="native"/>
+        </id>
+        <property name="bname"/>
+        <!-- 多对多需要有个关联表 -->
+        <set name="authors" table="t_book_author" lazy="extra">
+       	 	<!-- 我在对方的外键名称 -->
+        	<key column="b_id"/>
+        	<!-- column：这个外键在table中的名称 -->
+        	<many-to-many class="Author" column="a_id"/>
+        </set>
+    </class>
+</hibernate-mapping>

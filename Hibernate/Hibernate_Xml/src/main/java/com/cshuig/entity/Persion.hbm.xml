@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.cshuig.entity">
+    <class name="Persion" table="t_persion">
+        <id name="id">
+          <generator class="native"/>
+        </id>
+        <property name="pname"/>
+        <!-- name:对方的属性，property-ref：是自己在对方的属性 -->
+        <one-to-one name="idCard" property-ref="persion" />
+    </class>
+</hibernate-mapping>
