@@ -11,6 +11,8 @@
     <modules>
         <module>Hibernate</module>
         <module>freemarker</module>
+        <module>tools</module>
+        <module>DBToBean</module>
     </modules>
 
     <packaging>pom</packaging>
