@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>事件操作：bind</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+    <style type="text/css">
+        .bt1{
+            width: 100px;
+        }
+        .bg{
+            background:#ff0000;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<script type="text/javascript">
+
+    $(function(){
+        /**
+         * 深入研究：bind(type,[data],fn)方法
+         * 1、bind同时绑定多个事件，多个事件用空格分开
+         * 2、使用bind()所带来的问题是：当新增加元素的时候，是没有办法为新元素绑定事件，需要重新使用bind来绑定
+         */
+        //1、同时绑定鼠标移入移出事件 切换样式，可以看到此中方法代码量非常少，符合jquery的口号。。
+        $("#d1").bind("mouseover mouseout",function(){
+            $(this).toggleClass("bg");
+        });
+        $("a[href^='http://']").bind("click",function(event){
+            $("#content").append("点击了a标签【百度】，但是被我阻止了");
+            event.preventDefault();
+        });
+
+        //2、unbind(type,[data],fn)取消绑定
+        $("#d1").unbind("mouseout");
+    });
+</script>
+<body id="body">
+    <div id="d1">
+            鼠标移动过来看看
+    </div>
+    <a href="http://www.baidu.com">百度</a>
+    <div id="content"></div>
+
+
+</body>
+</html>

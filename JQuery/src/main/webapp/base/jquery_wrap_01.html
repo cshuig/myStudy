@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>包装集</title>
+    <script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+</head>
+<script type="text/javascript">
+    $(function(){
+        //1、获取table中tr的个数
+            alert($("table tr").size());
+        //2、获取包装集中第一个tr元素，此时取出来的是一个js对象
+            alert($($("table tr").get(1)).html());
+        //3、获取id='tr_id_2'的tr在包装集中的位置
+            alert($("table tr").index($("tr#tr_id_2")));
+        //4、可以通过 ， 来获取多个包装集
+            $("table tbody tr:eq(2),tr#tr_id_2").css("background","yellow");
+        //5、为一个包装集，添加其他的元素
+            $("table tbody tr:eq(3)").add($("table thead tr td:eq(3)")).css("background","blue");
+        //6、从一个包装集中删除(不包含)指定的同类元素,即在这只能过滤tr，而不能过滤tr中的某个td
+            alert(($("table tbody tr").not($("table tbody tr#tr_id_2"))).size());
+
+        //7、eq() 还可以这样使用，获取指定tr中指定的td
+            alert($("table tbody tr:eq(4) td:eq(1)").html());
+        //8、从一个包装集中过滤掉下标<3的tr，剩下的就是0-2元素
+            alert(($("table tr").filter($("table tr:lt(3)"))).size());
+
+        //9、从一个包装集中，获取指定个数的元素，形成一个新的包装集:
+        //  使用silce(index,num); index:下标开始位置(0开始) ,  num：从index开始，获取num个元素；如下，从0开始获取2个元素
+            alert($("table tr").slice(0,2).size());
+
+        //10、搜索table中id='tr_id_2'的元素,find可以找出正在处理元素的后代元素
+            alert("10、"+($("table").find("tr#tr_id_2").html()));
+
+        //11、is表示的是当前的包装集中是否有某个元素(当前的包装集$("table")只有一个table，不存在td，所以会返回false，
+        //    如果当前包装集是$("td")，则就可以
+            alert("11、"+$("td").is("td:contains('mac')"));
+
+        //12、获取某个元素下的所有子元素,结果是以最后一个children为准，如下：结果为td元素
+            ($("tbody").children("tr").children("td:contains('mac')")).each(function(i){
+                alert("12、"+$(this).html());
+            });
+
+        //13、获取某个包装集中每个元素紧靠后面的同辈元素(注意：同辈元素和当前元素是一样的:如：tr -> tr  td -> td，
+        // 返回一个新的包装集
+            alert("13、" + $("tr#tr_id_2").next().html());
+
+        //14、获取某个包装集中每个元素后面的所有同辈元素，返回一个新的包装集
+            alert("14、" + $("tr#tr_id_2").nextAll().each(function(){
+                alert($(this).html());
+            }));
+
+        //15、获取某个包装集中的每个元素紧靠前面的同辈元素(如果指定的元素不一样，则会返回：undefined)，返回一个新的包装集
+            alert("15、"+$("tr#tr_id_2").prev("div ").html());
+        //16、获取某个包装集中的每个元素前面的所有同辈元素，返回一个新的包装集
+            alert($("tr#tr_id_2").prevAll().each(function(){
+                alert("16、"+$(this).html());
+            }));
+
+        //17、获取某个元素的直接父级节点(只有一级),(可自己指定需要的父节点的:如下div)，返回一个新的包装集
+            alert("17、"+$("#idSpan").parent("div").html());
+            alert("17、"+$("#idDiv").parent().html());
+        //18、获取某个元素的所有父节点(可自己指定需要的父节点的:如下div)，返回一个新的包装集
+            alert($("#idSpan").parents("div").each(function(i){
+                alert("18、"+i+" ："+$(this).html());
+            }));
+
+        //19、获取某个元素的所有同类且同辈元素(可自己指定)，返回一个新的包装集(不包括自己)，同时使用end()回到原来的包装集
+            $("tr#tr_id_2").siblings("div").css("fontSize","30px").end().css("fontColor","#fff");
+    });
+
+</script>
+<body>
+    <div id="idDiv">
+        div
+        <div>
+            <span id="idSpan">span</span>
+        </div>
+    </div>
+    <table width="700" align="center" border="1">
+        <thead>
+            <tr>
+                <td>商品标志</td>
+                <td>商品名称</td>
+                <td>商品数量</td>
+                <td>商品单价</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>macbook pro</td>
+                <td>10</td>
+                <td>15000</td>
+            </tr>
+            <div>前</div>
+            <tr id="tr_id_2">
+                <td>2</td>
+                <td>ipad air</td>
+                <td>10</td>
+                <td>4000</td>
+            </tr>
+            <div>后</div>
+            <tr>
+                <td>3</td>
+                <td>iphone 6s</td>
+                <td>10</td>
+                <td>6666</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>mac Pro</td>
+                <td>10</td>
+                <td>25000</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>iWatch</td>
+                <td>10</td>
+                <td>3000</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

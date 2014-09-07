@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>基础选择器</title>
+    <script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+</head>
+<script type="text/javascript">
+    $(function(){
+
+        //1、获取li中的所有A元素
+        var as = $("li a");
+        alert(as.length)//输出：4
+
+        //2、获取myList中第一级所有li中的所有A元素
+        var firstAs = $(".myList>li>ul a");
+        alert(firstAs.length);
+
+        //3、获取myList中第一级所有li中的第一个A元素
+        var ss = $(".myList>li>a");
+        alert(ss);
+
+        //4、获取href属性值以http://开头的a标签
+        $("a[href^='http://']").css("color","red");
+
+        //5、获取href属性值以pdf结尾的a标签
+        $("a[href$='pdf']").css("fontSize","20px");
+
+        //6、获取有A标签的所有li
+        alert("带有a标签的li个数：" + $("li:has('a')").length);
+
+        //7、获取id='li2'元素后面紧靠的的li元素   注意：紧紧只会取相邻的节点，如果没有li，则什么都不会取到
+        // 两个元素是紧紧靠在一起,元素间是同级关系
+        $("#li2+li").css("fontSize","30px");
+
+        //8、获取id='li3'元素后面任意的li元素     注意：元素间不紧靠的，元素间是同级关系
+        $("#li3~li").css("fontSize","30px");
+
+        //9、获取带有ID属性的所有li元素
+        $("li[id]").css("background","yellow");
+
+
+    //位置选择器。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。
+        //1、获取第一个li
+        alert($("li:first").html());
+
+        //2、获取指定位置的第一个li
+        alert($(".myList>li>ul li:first").html());
+        //3、获取最后一个li
+        alert($("li:last").html());
+
+        //4、获取myList中第一级所有的作为下级标签的第一个li标签
+        $(".myList>li li:first-child").css("background","green");
+
+        //5、获取myList中第一级所有的作为下级标签的最后一个li标签
+        $(".myList>li li:last-child").css("background","blue");
+
+        //6、获取myList中第一级所有的 没有兄弟节点的li
+        $(".myList>li li:only-child").html($(".myList>li li:only-child").html() + " ----  only-child");
+
+
+    });
+
+</script>
+<body>
+
+<ul class="myList">
+    <li>
+        <a href="http://wwww.baidu.com">baidu</a>
+        <ul>
+            <li><a href="css1.txt" title="css1">css1</a></li>
+            <li id="li2"><a href="css2.pdf" title="css2">css2</a></li>
+            <li id="li3"><a href="css3.exe" title="css3">css3</a></li>
+            <li>XPath1</li>
+            <li>XPath2</li>
+            <li>XPath3</li>
+            <ul>
+                <li>effff</li>
+            </ul>
+        </ul>
+    </li>
+    <li>
+        jquery支持
+        <ul>
+            <li>貂蝉</li>
+            <li>李逵</li>
+        </ul>
+    </li>
+    <li>
+        jquery支持
+        <ul>
+            <li>貂蝉</li>
+            <li>李逵</li>
+        </ul>
+    </li>
+    <li>
+        jquery支持
+        <ul>
+            <li>貂蝉</li>
+            <li>李逵</li>
+        </ul>
+    </li>
+</ul>
+
+<ul class="myList2">
+    <li>
+        <a href="http://wwww.baidu.com">baidu</a>
+        <ul>
+            <li><a href="css1.txt" title="css1">css1</a></li>
+            <li id="liee"><a href="css2.pdf" title="css2">css2</a></li>
+            <li id="lee"><a href="css3.exe" title="css3">css3</a></li>
+            <li>XPath1</li>
+            <li>XPath2</li>
+            <li>XPath3</li>
+        </ul>
+    </li>
+    <li>
+        jquery支持
+        <ul>
+            <li>貂蝉</li>
+            <li>李逵</li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>

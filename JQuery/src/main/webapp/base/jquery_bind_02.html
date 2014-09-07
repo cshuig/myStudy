@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>事件操作：bind</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+    <style type="text/css">
+        .bt1{
+            width: 100px;
+        }
+        .bg{
+            background:#ff0000;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<script type="text/javascript">
+
+    $(function(){
+        /**
+         * 事件委派的原理：
+         *      此时每一个事件只要被点击到，就会冒泡到document去，
+         *      所以以下事件会被处理，在处理时，判断一下该事件是否是我要处理的对象就可以了
+         *
+         * 此时也可以解决：bind()带来的问题,但是这种方式性能太差，
+         */
+        $(document).bind("click",function(event){
+            //获取处理的事件
+            var obj = $(event.target).closest(".aaa");
+
+            if(obj[0] == event.target){
+                alert($(obj[0]).html());
+            }
+        });
+
+        //添加一个 同辈 的新的元素，此时会发现，也有之前bind的事件
+        $("#d1").append("<div class='aaa'>a2</div>");
+
+        //添加一个 不同辈 的新的元素，此时会发现，也有之前bind的事件，这就不对了，此时可以使用delegate()来解决
+        $("#content").append("<div class='aaa'>a3</div>");
+
+    });
+</script>
+<body id="body">
+    <div id="d1">
+        <div class="aaa">a1</div>
+    </div>
+    <div id="content"></div>
+</body>
+</html>

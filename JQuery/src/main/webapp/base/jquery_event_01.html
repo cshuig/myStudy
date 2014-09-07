@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>事件操作：event</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+    <style type="text/css">
+        .bt1{
+            width: 100px;
+        }
+    </style>
+</head>
+<script type="text/javascript">
+    $(function(){
+
+        /**
+         * 1、bind(type,[data],fn) -->data：是一个json对象{xxx:"ss"}
+         * type：多个事件用空格分隔，也可以传一个json对象，为每个事件绑定独立的事件处理
+         */
+        $("#child").bind("click",{name:"cshuig"},function(event){
+            /**
+             * 可以使用：event.type来获取当前的事件类型如单击click事件
+             * 可以使用：event.data.xxx来获取传进来的参数值
+             * 可以使用：event.which来确定你到底按的是哪个键或按钮
+             */
+            $("#content").append(event.type+"---"+event.which+"---"+event.target.id).append("-----").append(event.data.name).append("<br/>");
+        });
+
+        //2、阻止事件继续往下走，如不喜欢form或者<a.> 继续提交或者 范围超链接
+        $("a").bind("click",function(event){
+            $("#content").append(event.type+"---"+event.which+"---"+event.currentTarget.id +"---"+event.target.id +"<br/>");
+            //jquery依然存在事件冒泡，可以使用以下函数取消事件冒泡
+            event.stopPropagation();
+            //可以使用以下方法来 阻止事件继续往下走，特别注意：这个和事件冒泡没有任何关系
+            event.preventDefault();
+        });
+
+        //3、当有些情况下，你希望页面加载完后，某些事件只能执行一次，一次执行后，就立马失效，此时可以使用one()
+        $("#child2").one("click",function(event){
+            $("#content").append(event.type+"---"+event.which+"---"+event.currentTarget.id +"---"+event.target.id +"<br/>")
+        });
+
+        /**
+         * 4、trigger(type,[data])：触发事件
+         * data：是一个数组参数
+         * 注意：此方法可以优先执行浏览器默认的事件，如果浏览器没有，则执行用户自己绑定的事件
+         */
+        $("#child3").bind("click",function(event,a){
+            $("#content").append(a+"---"+event.type+"---"+event.which+"---"+event.currentTarget.id +"---"+event.target.id +"<br/>")
+        });
+        //通过执行child4事件，来触发child3的绑定事件的执行
+        $("#child4").bind("click",function(){
+            /**
+             * 通过如下方式就可以触发child3的click事件发生
+             * 带来的好处：
+             * 1、可以在其他的对象中调用另一个 事件
+             * 2、可以为事件传递参数
+             */
+            $("#child3").trigger("click",["cshuig参数"]);
+        });
+
+        /**
+         * 5、triggerHandler()
+         * 注意：和trigger不同的是，此方法不会执行浏览器的默认事件，而只会执行用户自己绑定的方法
+         * 带来的好处：
+         *      可以直接让调用的事件不冒泡、不提交
+         *      写事件我们完全按照最正常的方式来写，不用考虑事件传递
+         *      在特殊情况下，通过使用triggerHander来调用就会阻止事件传递
+         */
+        $("#old").click(function(){
+            alert("此时：执行的是浏览器默认事件：focus");
+            $("#myinput").trigger("focus");
+        });
+
+        $("#new").click(function(){
+            alert("此时：不会执行浏览器默认事件，而是执行用户自己绑定的事件focus");
+            $("#myinput").triggerHandler("focus");
+        });
+
+        $("#myinput").focus(function(){
+            $("<span>hello triggerHandler</span>").appendTo($("#content"));
+        });
+
+    });
+</script>
+<body id="body">
+    <div id="parent">
+        <div id="child">
+            child：点击一下看看
+        </div>
+        <div id="child2">
+            child2：我只执行一次
+        </div>
+        <div id="child3">
+            child3：我被其他事件触发
+        </div>
+        <div id="child4">
+            child4：点击我，来触发
+        </div>
+    </div>
+    <button id="old">.trigger("focus")</button>
+    <button id="new">.triggerHandler("focus")</button><br/><br/>
+    <input id="myinput" type="text" value="To Be Focused"/>
+
+    <a href="jquery_event_01.html">event</a>
+    <div id="content"></div>
+
+
+</body>
+</html>

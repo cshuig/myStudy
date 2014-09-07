@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>each</title>
+    <script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+</head>
+<script type="text/javascript">
+    $(function(){
+        /**
+         * has()：遍历一个包装集中的每个元素
+         * @type {*|jQuery}
+         */
+        $("table tbody").each(function(){   //遍历tbody
+            $(this).children("tr").each(function(){     //遍历tbody中的每一个tr
+                $(this).children("td").each(function(){ //遍历tr中的每一个td
+                    alert($(this).html());
+                });
+            });
+        });
+    });
+</script>
+<body>
+<table id="t1Id" width="700" align="center" border="1">
+    <thead>
+        <tr>
+            <td>商品标志</td>
+            <td>商品名称</td>
+            <td>商品数量</td>
+            <td>商品单价</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>macbook pro</td>
+            <td>10</td>
+            <td>15000</td>
+        </tr>
+        <div>前</div>
+        <tr id="tr_id_2">
+            <td>2</td>
+            <td>ipad air</td>
+            <td>10</td>
+            <td>4000</td>
+        </tr>
+        <div>后</div>
+        <tr>
+            <td>3</td>
+            <td>iphone 6s</td>
+            <td>10</td>
+            <td>6666</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>mac Pro</td>
+            <td>10</td>
+            <td>25000</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>iWatch</td>
+            <td>10</td>
+            <td>3000</td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

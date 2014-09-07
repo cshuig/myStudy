@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>事件操作：delegate</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+    <style type="text/css">
+        .bt1{
+            width: 100px;
+        }
+        .bg{
+            background:#ff0000;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<script type="text/javascript">
+
+    $(function(){
+        /**
+         * 1、为d1中的 .aaa 绑定一个click事件
+         *  下面：d1表示作用域，
+         *          第一个参数：表示在这个作用域中的绑定的对象
+         *  在jquery1.8之后：统一使用on和off来替代bind，live和delegate
+         */
+        $("#d1").delegate(".aaa","click",function(){
+            alert($(this).html());
+        });
+        //添加一个 同辈 的新的元素，此时会发现，也有之前bind的事件
+        $("#d1").append("<div class='aaa'>a2</div>");
+
+        //添加一个 不同辈 的新的元素，此时会发现，没有bind事件了，有效的解决了bind()带来的问题
+        $("#content").append("<div class='aaa'>a3</div>");
+    });
+</script>
+<body id="body">
+    <div id="d1">
+        <div class="aaa">a1</div>
+    </div>
+    <div id="content"></div>
+
+
+</body>
+</html>

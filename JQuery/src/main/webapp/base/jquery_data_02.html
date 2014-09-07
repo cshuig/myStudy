@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>属性操作：data</title>
+    <script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+</head>
+<script type="text/javascript">
+    $(function(){
+        /**
+         * 实现的功能： 为thead中的td添加属性title，同时返回一个数组(包含从第一个td到最后一个td的title属性值)，
+         *    作为将tbody中的td转换为对象的key，最后返回一个对象列表
+         */
+        $("thead tr td").each(function(n){
+            $(this).data("title","td"+n);
+        });
+        //将thead中td的title属性值取出并放入一个数组中。
+        var props = $("thead tr td").map(function(){
+            return $(this).data("title");
+        }).get();
+
+        //用来存放tbody中每个tr转换后的对象列表，----在此我是将里面的对象设置为javascript对象
+        var products = new Array();
+        //遍历tbod中每个tr，同时将tr中的各个td值转换为一个对象的值
+        $("tbody>tr").each(function(n){
+            var product = new Object();
+            $(this).children("td").each(function(i){
+                //product[props[i]] = $(this).html();
+                $(product).attr(props[i],$(this).html());
+            });
+            products.push(product);
+        });
+
+        $(products).each(function(n){
+            var obj = $(this);
+            var str = "";
+            $(props).each(function(i){
+                str += obj.attr(this) + ",";
+            });
+            str = str.substr(0,str.length-1);
+            alert(str);
+        });
+    });
+</script>
+<body>
+<table id="t1Id" width="700" align="center" border="1">
+    <thead>
+        <tr>
+            <td>商品标志</td>
+            <td>商品名称</td>
+            <td>商品数量</td>
+            <td>商品单价</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr id="t1">
+            <td>1</td>
+            <td id="tddd" class="td_class">macbook pro</td>
+            <td>10</td>
+            <td>15000</td>
+        </tr>
+        <div>前</div>
+        <tr>
+            <td>2</td>
+            <td>ipad air</td>
+            <td>10</td>
+            <td>4000</td>
+        </tr>
+        <div>后</div>
+        <tr>
+            <td>3</td>
+            <td>iphone 6s</td>
+            <td>10</td>
+            <td>6666</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>mac Pro</td>
+            <td>10</td>
+            <td>25000</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>iWatch</td>
+            <td>10</td>
+            <td>3000</td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>事件操作：live</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+    <style type="text/css">
+        .bt1{
+            width: 100px;
+        }
+        .bg{
+            background:#ff0000;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<script type="text/javascript">
+
+    $(function(){
+        /**
+         * 1、使用的是bind()事件的方式
+         * 结果：新元素是没有办法绑定事件，需要重新使用bind()来绑定
+         */
+        $(".aaa").bind("click",function(){
+            alert($(this).text());
+        });
+        $("#d1").append("<div class='aaa'>a2</div>");
+
+        /**
+         * 1、使用live()事件的方式
+         * 结果：可以有效的解决bind()所带来的问题
+         * live事件的原理是通过事件委托，而事件委托是通过冒泡机制实现的
+         *
+         * ---特别注意，此方法1.7之后，已经不使用了，请使用on()来添加事件处理，
+         *                          旧版的优先使用 delegate()来替代live()
+         */
+    });
+</script>
+<body id="body">
+    <div id="d1">
+        <div class="aaa">a1</div>
+    </div>
+    <div id="d2">
+        <div class="bbb">b1</div>
+    </div>
+    <div id="content"></div>
+
+
+</body>
+</html>

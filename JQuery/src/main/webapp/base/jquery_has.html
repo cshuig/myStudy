@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>has</title>
+    <script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+</head>
+<script type="text/javascript">
+    $(function(){
+        /**
+         * has()：查找父类元素中是否有某个子元素,返回的是父类元素的一个新的包装集
+         * @type {*|jQuery}
+         */
+        //1、获取存在ul的li，返回的是新的包装集
+        $("li").has("ul").css("color","red").end().css("background","orange");
+
+        //获取存在span的div
+        $("div").has("span").css("color","red").end().css("fontSize","30px");
+
+        //获取存在li的div
+        $("div").has("li").css("color","blue");
+    });
+</script>
+<body>
+    <div>
+        <span class="s1">ffffffffffffffffff</span>
+    </div>
+    <div>
+        <span>111111111111111111111111</span>
+    </div>
+    <div>
+        <ul class="ul">
+            <li>sfefefef</li>
+        </ul>
+    </div>
+    <ul>
+        <li>aaa</li>
+        <li>bbb</li>
+        <li>
+            ccc
+            <ul>
+                <li>ccc1</li>
+                <li>ccc2</li>
+                <li>ccc3</li>
+            </ul>
+        </li>
+        <li>ddd</li>
+        <li>eee</li>
+    </ul>
+</body>
+</html>

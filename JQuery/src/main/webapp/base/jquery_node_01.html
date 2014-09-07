@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>节点操作</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+    <style type="text/css">
+        .bt1{
+            width: 250px;
+        }
+    </style>
+</head>
+<script type="text/javascript">
+    $(function(){
+        //1、使用append(ele)，把ele追加到当前节点的 [最后]，之后ele消失，返回的是旧的包装集;$("#d1")
+        $("#d1").append($("#d2"));
+
+        //2、使用appendTo(ele)，把当前节点追加到ele节点的 [最后]        返回的是旧的包装集;$("#d3")
+        $("#d3").appendTo($("#d4"));
+
+        //3、使用prepend(ele),把ele追加到当前节点的 [最前]             返回的是旧的包装集;$("#d5")
+        $("#d5").prepend($("#d6"));
+        //4、使用prependTo(ele)，把当前节点追加到ele节点的 [最前]       返回的是旧的包装集;$("#d7")
+        $("#d7").prependTo($("#d8"));
+
+        //5、使用after(ele),把ele节点 放到 当前节点的后面，还是同级同辈   返回的是旧的包装集;$("#d9")
+        $("#d9").after($("#d10"));
+        //6、使用before，把ele节点 放到 当前节点的前面，还是同级同辈，      返回的是旧的包装集;$("#d11")
+        $("#d11").before($("#d12"));
+
+        //7、使用after(ele),把当前节点放到到ele节点的后面，还是同级同辈   返回的是旧的包装集;$("#d7")
+        $("#d13").insertAfter($("#d14"));
+        //8、使用before，把当前节点放到ele节点的前面，还是同级同辈，      返回的是旧的包装集;$("#d7")
+        $("#d15").insertBefore($("#d16"));
+
+    });
+</script>
+<body>
+    <div id="d1" class="cshuig">
+        第1个div
+    </div>
+    <div id="d2" class="cshuig">
+        第2个div  通过 $("#d1").append($("#d2")); 被添加到 第1个div中的后面
+    </div>
+
+    <div id="d3" class="cshuig">
+        第3个div  通过 $("#d3").appendTo($("#d4")); 被添加到 第4个div中的后面
+    </div>
+    <div id="d4" class="cshuig">
+        第4个div
+    </div>
+
+    <div id="d5" class="cshuig">
+        第5个div
+    </div>
+    <div id="d6" class="cshuig">
+        第6个div 通过 $("#d5").prepend($("#d6")); 被添加到第5个div中的前面
+    </div>
+    <div id="d7">
+        第7个div 通过 $("#d7").prepend($("#d8")); 被添加到第8个div中的前面
+        <ul>
+            <li>貂蝉</li>
+            <li>李逵</li>
+            <li>八戒</li>
+        </ul>
+    </div>
+    <div id="d8" class="cshuig">
+        第8个div
+    </div>
+
+    <div id="d9" class="cshuig">
+        第9个div
+    </div>
+
+    <div id="d10" class="cshuig">
+        第10个div 通过 $("#d9").after($("#d10")); 被添加到第9个div的后面
+    </div>
+
+    <div id="d11" class="cshuig">
+        第11个div
+    </div>
+
+    <div id="d12" class="cshuig">
+        第12个div 通过 $("#d11").before($("#d12")); 被添加到第11个div的前面
+    </div>
+
+    <div id="d13" class="cshuig">
+        第13个div 通过 $("#d13").insertAfter($("#d14")); 被添加到第14个div的前面
+    </div>
+
+    <div id="d14" class="cshuig">
+        第14个div
+    </div>
+
+    <div id="d15" class="cshuig">
+        第15个div 通过 $("#d15").insertBefore($("#d16")); 被添加到第16个div的前面
+    </div>
+
+    <div id="d16" class="cshuig">
+        第16个div
+    </div>
+</body>
+</html>

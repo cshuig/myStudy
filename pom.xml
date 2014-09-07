@@ -13,6 +13,7 @@
         <module>freemarker</module>
         <module>tools</module>
         <module>DBToBean</module>
+        <module>JQuery</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -22,6 +23,7 @@
     <description>
         我的学习脚印。。。
         2014/8/26  ---  距离离职 厦门同步天成有限公司 还有 4天
+        刚好快交接完，比较有时间，就整理一下代码，慢慢来，有很多很多。。。
     </description>
 
     <properties>

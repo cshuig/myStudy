@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+    <style type="text/css">
+        .bg{
+            background:#f00;
+            color: #000;
+        }
+    </style>
+</head>
+<script type="text/javascript">
+    $(function(){
+        //此时返回的是一个数组，里面的每一个元素都是一个原生的DOM对象
+        var lis = $("#hello ul li");
+        for(var i=0;i<lis.length;i++){
+            //注意：此时li是一个原生的DOM对象，只能使用javascript的方法
+            var li = lis[i];
+            li.style.fontSize = "50px";
+
+            //此时是通过转换为jquery对象，在使用jquery的API
+            $(li).html((i+1) + "-----" + $(li).html())
+        }
+    });
+
+</script>
+<body>
+
+<div id="hello">
+    <ul>
+        <li class="id_class">aaaaaaaaaa</li>
+        <li>bbbbbbbbbb</li>
+        <li class="li_class">cccccccccc</li>
+        <li>dddddddddd</li>
+        <li class="li_class">eeeeeeeeee</li>
+        <li>ffffffffff</li>
+    </ul>
+</div>
+</body>
+</html>

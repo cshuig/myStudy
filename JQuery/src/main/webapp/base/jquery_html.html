@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>文本操作：html和text</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+    <style type="text/css">
+        .bt1{
+            width: 100px;
+        }
+    </style>
+</head>
+<script type="text/javascript">
+    $(function(){
+
+        //1、使用html()
+        $("#bt1").addClass("bt1").click(function(){
+            //1、把d1的内容和d2的内容互换
+            var d1html = $("#d1").html();
+            $("#d1").html($("#d2").html());
+            $("#d2").html(d1html);
+
+        });
+        //使用text()，此方法仅仅只是获取文本，而不会获取标签信息，html()不仅会取到文本，连标签都会获取
+        alert("使用text()："+$("#d2").text());
+        alert("使用html()："+$("#d2").html());
+
+    });
+</script>
+<body>
+    <div id="d1">
+        第一个div
+    </div>
+    <div id="d2">
+        第二个div
+        <ul>
+            <li>貂蝉</li>
+            <li>李逵</li>
+            <li>八戒</li>
+        </ul>
+    </div>
+    <div>
+        <button id="bt1" name="d1和d2互换">d1和d2互换</button>
+    </div>
+</body>
+</html>

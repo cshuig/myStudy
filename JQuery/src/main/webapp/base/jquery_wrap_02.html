@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>包装集2-复杂一点的操作</title>
+    <script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+</head>
+<script type="text/javascript">
+    $(function(){
+        //1、克隆一个包装集，同时新包装集中的偶数记录，之后在返回到最原始的包装集，操作他的奇数包装集
+        $("#t1Id tbody").clone().appendTo("#t2Id").find("tr:even").css("color","red")
+                .end().end().end().find("tr:odd").css("color","blue");
+        //2、合并多个包装集
+        $("#t1Id tbody").clone().andSelf().appendTo("#t4Id");
+    });
+
+</script>
+<body>
+    <table id="t2Id" width="700" align="center" border="1"></table>
+    <br/>
+    <table id="t3Id" width="700" align="center" border="1"></table>
+    <br/>
+    <table id="t1Id" width="700" align="center" border="1">
+        <thead>
+            <tr>
+                <td>商品标志</td>
+                <td>商品名称</td>
+                <td>商品数量</td>
+                <td>商品单价</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>macbook pro</td>
+                <td>10</td>
+                <td>15000</td>
+            </tr>
+            <div>前</div>
+            <tr id="tr_id_2">
+                <td>2</td>
+                <td>ipad air</td>
+                <td>10</td>
+                <td>4000</td>
+            </tr>
+            <div>后</div>
+            <tr>
+                <td>3</td>
+                <td>iphone 6s</td>
+                <td>10</td>
+                <td>6666</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>mac Pro</td>
+                <td>10</td>
+                <td>25000</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>iWatch</td>
+                <td>10</td>
+                <td>3000</td>
+            </tr>
+        </tbody>
+    </table>
+    <br/>
+    <table id="t4Id" width="700" align="center" border="1"></table>
+</body>
+</html>

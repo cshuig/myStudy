@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>属性操作：data</title>
+    <script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+</head>
+<script type="text/javascript">
+    $(function(){
+      //1、通过data()可以为节点添加属性，和attr不同的是，使用data后，在界面上的相应节点中是看不到添加的属性，而attr是可以看到
+        $("tbody tr").each(function(n){
+            //为每个tr缓存一个name属性，此属性在界面上是看不到的
+            $(this).data("name","这是第"+(n+1)+"个tr");
+        });
+      //2、使用data()来获取通过data()设置的值
+        alert($("tr#t1").data("name"));
+
+    });
+</script>
+<body>
+    <a href="jquery_attr_01.html">attr01</a>
+    <a href="jquery_each.html">each</a>
+    <a href="jquery_has.html">has</a>
+    <a href="jquery_select_01.html">select01</a>
+    <a href="jquery_wrap_01.html">wrap01</a>
+    <a href="http://www.baidu.com">baidu</a>
+<table id="t1Id" width="700" align="center" border="1">
+    <thead>
+        <tr>
+            <td>商品标志</td>
+            <td>商品名称</td>
+            <td>商品数量</td>
+            <td>商品单价</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr id="t1">
+            <td>1</td>
+            <td id="tddd" class="td_class">macbook pro</td>
+            <td>10</td>
+            <td>15000</td>
+        </tr>
+        <div>前</div>
+        <tr>
+            <td>2</td>
+            <td>ipad air</td>
+            <td>10</td>
+            <td>4000</td>
+        </tr>
+        <div>后</div>
+        <tr>
+            <td>3</td>
+            <td>iphone 6s</td>
+            <td>10</td>
+            <td>6666</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>mac Pro</td>
+            <td>10</td>
+            <td>25000</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>iWatch</td>
+            <td>10</td>
+            <td>3000</td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>样式操作：class</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+    <style type="text/css">
+        .addBg{
+            background:#f00;
+            color: #fff;
+        }
+
+        .overBg{
+            background:bisque;
+            font-size: 20px;
+        }
+
+        .btn{
+           width: 80px;
+           height:20px;
+        }
+    </style>
+</head>
+<script type="text/javascript">
+    $(function(){
+        $("button#bt1").click(function(){
+            addClass();
+        }).addClass("btn");
+        $("button#bt2").click(function(){
+            removeClass();
+        }).addClass("btn");
+
+        $("tbody tr").each(function(n){
+            $(this).mouseover(toggleClass);
+        }).mouseout(toggleClass);
+    });
+
+    function addClass(){
+        $("thead td").addClass("addBg");
+        //使用hasClass来判断目标节点是否含有指定的样式
+        alert($("thead td").hasClass("addBg"));
+    }
+    function removeClass(){
+        $("thead td").removeClass("addBg");
+        //使用hasClass来判断目标节点是否含有指定的样式
+        alert($("thead td").hasClass("addBg"));
+    }
+
+    function toggleClass(){
+        //这个方法指：判断是否有这个样式类，如果有则删除，没有就添加
+        $(this).toggleClass("overBg");
+    }
+</script>
+<body>
+<table id="t1Id" width="700" align="center" border="1">
+    <thead>
+        <tr>
+            <td>商品标志</td>
+            <td>商品名称</td>
+            <td>商品数量</td>
+            <td>商品单价</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td id="tddd" class="td_class">macbook pro</td>
+            <td>10</td>
+            <td>15000</td>
+        </tr>
+        <div>前</div>
+        <tr>
+            <td>2</td>
+            <td>ipad air</td>
+            <td>10</td>
+            <td>4000</td>
+        </tr>
+        <div>后</div>
+        <tr>
+            <td>3</td>
+            <td>iphone 6s</td>
+            <td>10</td>
+            <td>6666</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>mac Pro</td>
+            <td>10</td>
+            <td>25000</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>iWatch</td>
+            <td>10</td>
+            <td>3000</td>
+        </tr>
+        <tr>
+            <td colspan="4" align="center">
+                <button id="bt1" name="添加样式">添加样式</button>
+                <button id="bt2" name="移除样式">移除样式</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
