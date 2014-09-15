@@ -14,6 +14,7 @@
         <module>tools</module>
         <module>DBToBean</module>
         <module>JQuery</module>
+        <module>Spring</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -55,6 +56,10 @@
         <zip4j-version>1.3.2</zip4j-version>
         <maven-resources-plugin-version>2.6</maven-resources-plugin-version>
         <maven-compiler-plugin-version>3.1</maven-compiler-plugin-version>
+
+        <mockito.core.version>1.9.5</mockito.core.version>
+        <jsonpath.version>0.9.0</jsonpath.version>
+        <jackson2.version>2.2.3</jackson2.version>
     </properties>
 
     <issueManagement>
@@ -119,7 +124,7 @@
         <testSourceDirectory>ss</testSourceDirectory>
 
         <!-- 被编译后的class文件存储目录 -->
-        <outputDirectory>d:/myStudy/app</outputDirectory>
+        <outputDirectory>d:/myStudy/src</outputDirectory>
         <!-- 被编译后的 测试代码的 class文件存储目录 -->
         <testOutputDirectory>d:/myStudy/test</testOutputDirectory>
 
@@ -346,6 +351,24 @@
                 <artifactId>hamcrest-library</artifactId>
                 <version>${hamcrest-library-version}</version>
                 <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${mockito.core.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson2.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.jayway.jsonpath</groupId>
+                <artifactId>json-path</artifactId>
+                <version>${jsonpath.version}</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
