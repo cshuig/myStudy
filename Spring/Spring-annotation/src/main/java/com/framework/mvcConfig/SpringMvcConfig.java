@@ -18,7 +18,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.cshuig",useDefaultFilters = false,
+@ComponentScan(basePackages = "com.cshuig",
+                useDefaultFilters = false,
                includeFilters = {@ComponentScan.Filter(type=FilterType.ANNOTATION,
                                                        value = {Controller.class})})
 public class SpringMvcConfig extends WebMvcConfigurationSupport {
