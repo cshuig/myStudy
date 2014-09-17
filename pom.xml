@@ -63,6 +63,7 @@
         <jsonpath.version>0.9.0</jsonpath.version>
         <jackson2.version>2.2.3</jackson2.version>
         <java.home>d:\soft\delSoft\jdk\jdk1.7.0_51</java.home>
+        <sitemesh-version>3.0.0</sitemesh-version>
     </properties>
 
     <issueManagement>
@@ -398,11 +399,15 @@
                 <artifactId>jackson-databind</artifactId>
                 <version>${jackson2.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.jayway.jsonpath</groupId>
                 <artifactId>json-path</artifactId>
                 <version>${jsonpath.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.sitemesh</groupId>
+                <artifactId>sitemesh</artifactId>
+                <version>${sitemesh-version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
