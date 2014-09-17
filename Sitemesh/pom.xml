@@ -11,7 +11,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.cshuig.myStudy.sitemesh</groupId>
-    <artifactId>Sitemesh-parent</artifactId>
+    <artifactId>Sitemesh</artifactId>
     <packaging>pom</packaging>
     <modules>
         <module>sitemesh-base</module>

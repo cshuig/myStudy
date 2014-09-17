@@ -10,7 +10,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>httpClient-parent</artifactId>
+    <artifactId>httpClient</artifactId>
 
 
 </project>
