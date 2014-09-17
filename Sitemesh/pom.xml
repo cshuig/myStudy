@@ -10,7 +10,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>httpClient-parent</artifactId>
+    <groupId>com.cshuig.myStudy.sitemesh</groupId>
+    <artifactId>Sitemesh-parent</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>sitemesh-base</module>
+    </modules>
 
 
 </project>

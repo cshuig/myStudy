@@ -15,8 +15,8 @@
         <module>DBToBean</module>
         <module>JQuery</module>
         <module>Spring</module>
-        <module>httpClient-parent</module>
         <module>httpClient</module>
+        <module>Sitemesh</module>
     </modules>
 
     <packaging>pom</packaging>
