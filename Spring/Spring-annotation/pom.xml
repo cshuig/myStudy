@@ -22,17 +22,6 @@
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>7.0</version>
-
-            <!--
-               依赖作用范围：
-                complie ： 默认的范围，用于编译
-                provided ：类似编译
-                runtime  ：在运行时才会使用到
-                test     ：在执行测试时才会用到
-                system   ：
-                systemPath  ：
-                optional   ：当项目自身被依赖，标志依赖是否支持传递
-             -->
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -42,24 +31,20 @@
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
         </dependency>
+
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-core</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-library</artifactId>
-        </dependency>
-
 
         <dependency>
             <groupId>org.springframework</groupId>
@@ -76,7 +61,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <scope>test</scope>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
