@@ -119,6 +119,26 @@
 
     <!-- 构建项目需要的信息 -->
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.mortbay.jetty</groupId>
+                    <artifactId>jetty-maven-plugin</artifactId>
+                    <configuration>
+                        <scanIntervalSeconds>10</scanIntervalSeconds>
+                        <webApp>
+                            <contextPath>/${project.build.finalName}</contextPath>
+                        </webApp>
+                        <connectors>
+                            <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+                                <port>9090</port>
+                                <maxIdleTime>60000</maxIdleTime>
+                            </connector>
+                        </connectors>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <!--  项目源码的目录，当构建项目时，构建系统会编译目录里面的源码 -->
         <sourceDirectory>ss</sourceDirectory>
         <!-- 项目的脚本源码目录，该目录和源码目录不同，绝大多数情况下，该目录下的内容，会被拷贝到输出目录 -->
