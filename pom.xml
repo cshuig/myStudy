@@ -156,6 +156,16 @@
                         <encoding>utf-8</encoding>
                     </configuration>
                 </plugin>
+
+                <!--Maven的打包部署与Debug行为描述-->
+                <plugin>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>2.1.1</version>
+                    <configuration>      <!-- 有这个定义，则你调试的时候不会进入target目录下，你就不用总去重启服务，尤其在页面调试的时候很方便 -->
+                        <webappDirectory>${basedir}/src/main/webapp</webappDirectory>
+                        <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
         <!--  项目源码的目录，当构建项目时，构建系统会编译目录里面的源码 -->
@@ -173,7 +183,7 @@
 
 
         <!-- 构建后的文件名字 -->
-        <finalName>${artifactId}</finalName>
+        <finalName>${project.artifactId}</finalName>
     </build>
 
     <repositories>

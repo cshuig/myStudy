@@ -17,6 +17,7 @@
 
     <modules>
         <module>SpringMVC-xml</module>
+        <module>SpringMVC-Annotation</module>
     </modules>
 
 
