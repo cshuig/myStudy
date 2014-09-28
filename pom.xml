@@ -8,6 +8,10 @@
     <artifactId>myStudy</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
+    <packaging>pom</packaging>
+    <name>myStudy</name>
+    <url>http://maven.apache.org</url> <!-- 项目主页的URL, Maven产生的文档用 -->
+
     <modules>
         <module>Hibernate</module>
         <module>freemarker</module>
@@ -19,9 +23,6 @@
         <module>Sitemesh</module>
     </modules>
 
-    <packaging>pom</packaging>
-    <name>myStudy</name>
-    <url>http://maven.apache.org</url> <!-- 项目主页的URL, Maven产生的文档用 -->
 
     <description>
         我的学习脚印。。。
@@ -226,6 +227,16 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-aop</artifactId>
+                <version>${springframework-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>aopalliance</groupId>
+                <artifactId>aopalliance</artifactId>
+                <version>1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-expression</artifactId>
                 <version>${springframework-version}</version>
             </dependency>
             <dependency>

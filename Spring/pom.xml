@@ -10,13 +10,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>com.cshuig.myStudy.Spring</groupId>
     <artifactId>Spring</artifactId>
     <packaging>pom</packaging>
     <name>Spring</name>
-    <url>http://maven.apache.org</url>
 
     <modules>
-        <module>Spring-annotation</module>
+        <module>SpringMVC-annotation</module>
+        <module>SpringMVC-xml</module>
     </modules>
 
 
