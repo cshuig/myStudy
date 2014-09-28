@@ -16,7 +16,6 @@
     <name>Spring</name>
 
     <modules>
-        <module>SpringMVC-annotation</module>
         <module>SpringMVC-xml</module>
     </modules>
 
